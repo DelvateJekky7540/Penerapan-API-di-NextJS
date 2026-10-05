@@ -3,9 +3,7 @@
 import React, { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
 import ResponsiveMenu from './ResponsiveMenu';
-import WeatherCard from "@/components/WeatherCard";
-// import { useState, useEffect } from "react";
-// import { Sun, Cloud, CloudSun, CloudRain, CloudLightning, CloudFog } from 'react-icons/wi';
+import WeatherCard from "@/components/ui/WeatherCard";
 
 export const NavbarMenu = [
     {
@@ -15,17 +13,17 @@ export const NavbarMenu = [
     },
     {
         id: 2,
-        title: 'About',
+        title: 'School Zone',
         link: '#',
     },
     {
         id: 3,
-        title: 'Tools',
+        title: 'Random',
         link: '#',
     },
     {
         id: 4,
-        title: 'Project',
+        title: '',
         link: '#',
     },
 ];
@@ -35,7 +33,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50 w-full bg-transparent px-5 py-5 md:px-10 lg:px-20">
+            <nav className="sticky top-0 z-50 w-full bg-transparent py-3 md:px-10 lg:px-20">
                 <div className="flex w-full items-center justify-between rounded-full border border-white/10 bg-slate-900/[21%] px-3 py-2 text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl">
                     
                     {/* Logo */}

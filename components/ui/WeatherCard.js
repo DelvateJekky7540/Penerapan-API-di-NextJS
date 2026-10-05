@@ -12,13 +12,14 @@ import {
   WiThunderstorm 
 } from "react-icons/wi";
 
+
 function getWeatherIcon(code) {
   switch (code) {
     case 0:
       return { label: "Cerah", icon: <WiDaySunny className="text-4xl text-yellow-500" /> };
     case 1:
     case 2:
-      return { label: "Cerah Berawan", icon: <WiDayCloudy className="text-4xl text-yellow-400" /> };
+      return { label: "Cerah\nBerawan", icon: <WiDayCloudy className="text-4xl text-yellow-400" /> };
     case 3:
       return { label: "Berawan", icon: <WiCloudy className="text-4xl text-gray-400" /> };
     case 45:
@@ -64,8 +65,8 @@ export default function WheaterCard() {
     fetchWeather();
   }, []);
 
-  if (loading) return <div className="p-4 border rounded-xl max-w-xs text-center">Memuat cuaca...</div>;
-  if (!weather || !weather.current) return <div className="p-4 border rounded-xl max-w-xs text-center">Gagal memuat data.</div>;
+  if (loading) return <div className="p-2 border rounded-xl max-w-xs text-center">Memuat cuaca...</div>;
+  if (!weather || !weather.current) return <div className="p-2 border rounded-xl max-w-xs text-center">Gagal memuat data.</div>;
 
   const { temperature_2m, weather_code } = weather.current;
   const { temperature_2m: tempUnit } = weather.current_units;
@@ -79,8 +80,8 @@ export default function WheaterCard() {
       <span className="text-xs font-semibold text-gray-700">
         {temperature_2m}{tempUnit}
       </span>
-      <span className="text-[10px] font-bold text-gray-500 hidden sm:inline">
-        • {weatherInfo.label}
+      <span className="text-[10px] text-center font-bold text-gray-500 hidden whitespace-pre-line sm:inline">
+         {weatherInfo.label}
       </span>
     </div>
   );

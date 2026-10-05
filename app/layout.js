@@ -1,6 +1,7 @@
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/ui/Footer";
+import SoundcloudPlayer from "@/components/ui/SoundCloud";
 import { Poppins } from "next/font/google";
 
 
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
             <body className={poppins.className}>
                 <Navbar />
                 {children}
+                
                 <Footer />
+                <SoundcloudPlayer />
             </body>
         </html>
     );
