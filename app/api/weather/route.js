@@ -8,21 +8,20 @@ export async function GET(request) {
 
   try {
     // Meminta parameter temperature_2m dan weather_code
-    const res = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`,
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`,
       {
         next: { revalidate: 600 }, // Cache data selama 10 menit
       }
     );
 
-    if (!res.ok) {
+    if (!response.ok) {
       return NextResponse.json(
         { error: "Gagal mengambil data cuaca" },
-        { status: res.status }
+        { status: response.status }
       );
     }
 
-    const data = await res.json();
+    const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
