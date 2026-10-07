@@ -18,12 +18,12 @@ export const NavbarMenu = [
     },
     {
         id: 3,
-        title: 'Random',
+        title: 'Weather',
         link: '#',
     },
     {
         id: 4,
-        title: '',
+        title: 'Random',
         link: '#',
     },
 ];

@@ -2,10 +2,10 @@
 @custom-variant hover (&:hover);
 
 @custom-variant dark (&:is(.dark *));
-
+/* 
 * {
-    box-sizing: border-box;
-}
+  font
+} */
 
 html,
 body {
@@ -17,7 +17,18 @@ body {
   font-family: Arial, sans-serif;
 }
 
-main {
+/* Di globals.css */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 12s linear infinite;
+}
+
+/* main {
   min-height: 80vh;
   padding: 40px;
 }
@@ -26,7 +37,7 @@ footer {
   padding: 24px 40px;
   border-top: 1px solid #ddd;
   text-align: center;
-}
+} */
 
 @theme inline {
     --font-heading: var(--font-sans);

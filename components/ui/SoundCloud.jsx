@@ -8,14 +8,16 @@ import { FaPlay, FaChevronDown, FaStepForward, FaStepBackward } from "react-icon
 export default function SoundcloudPlayer() {
     const [isExpanded, setIsExpanded] = useState(true);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+    const [trackTitle, setTrackTitle] = useState("Loading...");
     const iframeRef = useRef(null);
     const widgetRef = useRef(null);
     const isFirstRender = useRef(true);
 
   // 1. Daftar Lagu Pilihanmu
     const playlist = [
-    { title: "One Of The Girls (Slowed)", url: "https://soundcloud.com/slakc/the-weeknd-jennie-lily-rose-depp-one-of-the-girls-slowed-reverb", },
-    { title: "Alive Breakbeat", url: "https://soundcloud.com/m-zainal-abidin-zainal/dj-alive-breakbeat-x-jdm", },
+    { title: "About You", url: "https://soundcloud.com/ibmanggapraharjasd/the-1975-about-you", },
+    { title: "See You Again", url: "https://soundcloud.com/kurniawan-ardi-kusuma-effendy/128a", },
+    { title: "Blank Space", url: "https://soundcloud.com/h-m-h-m-d-4/blank-space-by-taylor-swift", },
     { title: "Love Me Not Breakbeat", url: "https://soundcloud.com/fahmi-anwar-690788355/ravyn-lenae-love-me-not-fahmi", },
     { title: "Habbits Stay High X Breakbeat Thailand", url: "https://soundcloud.com/pandu-ws-928329716/dj-nueng-habits-stay-high", },
     { title: "We Can Be Friend", url: "https://soundcloud.com/raymond-wijaya-462260559/dj-we-can-t-be-friends-tiktok", },
@@ -26,14 +28,30 @@ export default function SoundcloudPlayer() {
     const currentTrack = playlist[currentTrackIndex];
 
     const initialEmbedUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(playlist[0].url) + "&color=%23" + themeColor + "&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false";
+    
+    const updateTrackMetadata = (widget) => {
+        if (!widget) return;
+        // API SoundCloud untuk mengambil objek lagu yang sedang aktif
+        widget.getCurrentSound((sound) => {
+            if (sound && sound.title) {
+                setTrackTitle(sound.title);
+            }
+        });
+    };
 
     const handleScriptLoad = () => {
         if (window.SC && iframeRef.current) {
             const widget = window.SC.Widget(iframeRef.current);
             widgetRef.current = widget;
 
-            widget.bind(window.SC.Widget.Events.FINISH, () => {
-            handleNext();
+            // Saat widget siap, ambil judul lagu pertamanya
+            widget.bind(window.SC.Widget.Events.READY, () => {
+                updateTrackMetadata(widget);
+            });
+
+            // Update judul saat lagu mulai diputar
+            widget.bind(window.SC.Widget.Events.PLAY, () => {
+                updateTrackMetadata(widget);
             });
         }
     };
@@ -106,7 +124,7 @@ export default function SoundcloudPlayer() {
                         {/* Tooltip Kustom Tailwind */}
                         <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col items-center pointer-events-none z-50">
                             <span className="relative z-10 p-1.5 text-[10px] whitespace-nowrap leading-none text-cyan-400 bg-slate-900 border border-cyan-500/50 rounded shadow-lg">
-                                Awas BreakBeat!!!
+                                Skip
                             </span>
 
                             <div className="w-2 h-2 -mt-1 rotate-45 bg-slate-900 border-r border-b border-cyan-500/50"></div>
@@ -127,6 +145,12 @@ export default function SoundcloudPlayer() {
                             </>
                         )}
                     </button>
+                </div>
+
+                <div className="w-[187px] overflow-hidden whitespace-nowrap">
+                    <div className="inline-block animate-marquee text-xs font-bold text-white">
+                        {trackTitle}
+                    </div>
                 </div>
 
                 {/* Frame Player */}
