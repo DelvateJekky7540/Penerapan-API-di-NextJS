@@ -76,26 +76,28 @@ export default function WheaterCard() {
 
   return (
     <div
-  className="
-    inline-flex items-center gap-2
-    rounded-full
-    border border-white/50
-    bg-white/30
-    px-3 py-1.5
-    backdrop-blur-md
-    transition
-    hover:bg-white/50
-  "
->
+      className="
+        inline-flex items-center gap-2
+        rounded-full
+        border border-white/50
+        bg-zinc-800/60
+        px-3 py-1.5
+        text-zinc-100
+        backdrop-blur-xl
+        transition-all duration-300
+      hover:border-white/20
+      hover:bg-zinc-700/70
+      "
+    >
   <span className="flex items-center">
     {weatherInfo.icon}
   </span>
 
-  <span className="text-xs font-semibold text-slate-700">
+  <span className="text-xs font-semibold text-white">
     {temperature_2m}{tempUnit}
   </span>
 
-  <span className="hidden text-[10px] font-medium text-slate-500 sm:inline">
+  <span className="hidden text-[10px] font-semibold text-white sm:inline">
     {weatherInfo.label}
   </span>
 </div>

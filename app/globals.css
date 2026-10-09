@@ -2,10 +2,11 @@
 @custom-variant hover (&:hover);
 
 @custom-variant dark (&:is(.dark *));
-/* 
-* {
-  font
-} */
+
+@theme {
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-space-grotesk: var(--font-space-grotesk), monospace;
+}
 
 html,
 body {

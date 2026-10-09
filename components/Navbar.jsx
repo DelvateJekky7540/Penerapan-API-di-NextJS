@@ -14,17 +14,17 @@ export const NavbarMenu = [
     {
         id: 2,
         title: 'School Zone',
-        link: '#',
+        link: '/school-zone',
     },
     {
         id: 3,
         title: 'Weather',
-        link: '#',
+        link: '/weather',
     },
     {
         id: 4,
         title: 'Random',
-        link: '#',
+        link: '/random',
     },
 ];
 
@@ -33,13 +33,14 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50 w-full bg-transparent py-3 md:px-10 lg:px-20">
-                <div className="flex w-full items-center justify-between rounded-full border border-white/10 bg-slate-900/[21%] px-3 py-2 text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+            <nav className="sticky top-0 z-50 w-full py-4 md:px-10 lg:px-20">
+                
+                <div className="flex w-full items-center justify-between rounded-full border border-white/10 bg-zinc-900/40 px-3 py-2 text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl">
                     
                     {/* Logo */}
-                    <div className="">
+                    <div className="pb-2">
                         <a href="/">
-                            <img src="/images/D.png" alt="Logo" className="w-5"/>
+                            <img src="/images/Dlogok.png" alt="Logo" className="w-14"/>
                         </a>
                     </div>
 
@@ -50,7 +51,7 @@ const Navbar = () => {
                                 <li key={menu.id}>
                                     <a href={menu.link} className="relative cursor-pointer font-medium group">
                                         {menu.title}
-                                        <span className="absolute left-0 -bottom-1.25 h-0.75 w-0 rounded-full bg-linear-to-r from-cyan-400 via-blue-500 to-violet-500 transition-all duration-300 group-hover:w-full"></span>
+                                        <span className="absolute left-0 -bottom-1.25 h-0.75 w-0 rounded-full bg-linear-to-r from-blue-50 to-white transition-all duration-300 group-hover:w-full"></span>
                                     </a>
                                 </li>
                             ))}

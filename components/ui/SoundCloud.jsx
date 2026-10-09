@@ -98,41 +98,41 @@ export default function SoundcloudPlayer() {
 
             <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2 font-mono">
                 {/* Control Bar Atas */}
-                <div className="flex items-center gap-1 bg-slate-900 border border-cyan-500/50 rounded-lg p-1 shadow-[0_0_15px_rgba(0,243,255,0.2)]">
+                <div className="flex items-center gap-1 rounded-md border border-white/70 bg-zinc-900/90 p-1 text-zinc-400 shadow-xl shadow-/20">
 
                     {/* Tombol Prev */}
                     <div className="relative group flex items-center justify-center">
-                        <button onClick={handlePrev} className="p-1.5 text-cyan-400 hover:text-white transition-all cursor-pointer">
+                        <button onClick={handlePrev} className="p-1.5 hover:text-white transition-all cursor-pointer">
                             <FaStepBackward size={10} />
                         </button>
 
                         <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col items-center pointer-events-none z-50">
-                            <span className="relative z-10 p-1.5 text-[10px] whitespace-nowrap leading-none text-cyan-400 bg-slate-900 border border-cyan-500/50 rounded shadow-lg">
+                            <span className="relative z-10 p-1.5 text-[10px] whitespace-nowrap leading-none bg-zinc-950 border border-white/50 text-white rounded shadow-lg">
                                 Kembali
                             </span>
 
-                            <div className="w-2 h-2 -mt-1 rotate-45 bg-slate-900 border-r border-b border-cyan-500/50"></div>
+                            <div className="w-2 h-2 -mt-1 rotate-45 bg-zinc-950 border-r border-b border-white/50"></div>
                         </div>
                     </div>
                     
                     {/* Tombol Next */}
                     <div className="relative group flex items-center justify-center">
-                        <button onClick={handleNext} className="p-1.5 text-cyan-400 hover:text-white transition-all cursor-pointer">
+                        <button onClick={handleNext} className="p-1.5 hover:text-white transition-all cursor-pointer">
                             <FaStepForward size={10} />
                         </button>
 
                         {/* Tooltip Kustom Tailwind */}
                         <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col items-center pointer-events-none z-50">
-                            <span className="relative z-10 p-1.5 text-[10px] whitespace-nowrap leading-none text-cyan-400 bg-slate-900 border border-cyan-500/50 rounded shadow-lg">
+                            <span className="relative z-10 p-1.5 text-[10px] whitespace-nowrap leading-none bg-zinc-950 border border-white/50 text-white rounded shadow-lg">
                                 Skip
                             </span>
 
-                            <div className="w-2 h-2 -mt-1 rotate-45 bg-slate-900 border-r border-b border-cyan-500/50"></div>
+                            <div className="w-2 h-2 -mt-1 rotate-45 bg-zinc-950 border-r border-b border-white/50"></div>
                         </div>
                     </div>
 
                     {/* Tombol Minimize */}
-                    <button onClick={() => setIsExpanded(!isExpanded)} className="flex items-center gap-2 px-3 py-1 text-cyan-400 text-xs font-bold tracking-wider cursor-pointer">
+                    <button onClick={() => setIsExpanded(!isExpanded)} className="flex items-center gap-2 px-3 py-1 text-xs font-bold tracking-wider cursor-pointer">
                         {isExpanded ? (
                             <>
                                 <span>MINIMIZE</span>
@@ -154,7 +154,7 @@ export default function SoundcloudPlayer() {
                 </div>
 
                 {/* Frame Player */}
-                <div className={"relative w-[294px] h-[120px] rounded-xl overflow-hidden border border-cyan-500/30 bg-black shadow-2xl transition-all duration-300 " + (isExpanded ? "block scale-100 opacity-100" : "hidden scale-95 opacity-0") }>
+                <div className={"relative w-[294px] h-[120px] rounded-xl overflow-hidden border border-white/30 bg-black shadow-2xl transition-all duration-300 " + (isExpanded ? "block scale-100 opacity-100" : "hidden scale-95 opacity-0") }>
                     <iframe ref={iframeRef}
                         width="100%"
                         height="140px"
