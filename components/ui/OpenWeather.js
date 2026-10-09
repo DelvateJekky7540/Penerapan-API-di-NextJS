@@ -1,6 +1,6 @@
 // PENTING: API key lama sudah terekspos. Buat key baru di openweathermap.org,
 // lalu tempel di baris berikut (key lama sebaiknya dihapus/di-regenerate).
-var API_KEY_CUACA = "138ec863e3b36fa738e4309859579d44";
+var API_KEY_CUACA = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
 export default function cekCuaca() {
     var kota = document.getElementById('kotaInput').value.trim();
@@ -10,8 +10,8 @@ export default function cekCuaca() {
         hasilDiv.textContent = 'Ketik nama kota dulu ya.';
         return;
     }
-    if (!API_KEY_CUACA || API_KEY_CUACA === "7c3921aaffa0cce9b4adb9432d3c4aad") {
-        hasilDiv.textContent = 'API key belum dipasang. Isi variabel API_KEY_CUACA di widget ini.';
+    if (!API_KEY_CUACA) {
+        hasilDiv.textContent = 'API key belum dipasang di environment variable.';
         return;
     }
 
